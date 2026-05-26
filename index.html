@@ -73,25 +73,18 @@
 
         <!-- INPUT -->
         <!-- NOMBRE, CEDULA, TELEFONO, CORREO -->
-        <input type="text" id="nombreCliente" placeholder="Nombre" onkeypress="soloLetras(event)">
+        <input type="text" id="nombreCliente" placeholder="Nombre">
 
-        <input type="text" id="cedulaCliente" placeholder="Cédula" onkeypress="soloNumeros(event)">
+        <input type="text" id="cedulaCliente" placeholder="Cédula">
 
-        <input type="text" id="telefonoCliente" placeholder="Teléfono" onkeypress="soloNumeros(event)">
+        <input type="text" id="telefonoCliente" placeholder="Teléfono">
 
         <input type="email" id="correoCliente" placeholder="Correo">
         <!-- BOTON -->
 
-        <button onclick="guardarCliente()">
-
-            Guardar Cliente
-
-        </button>
-        <button onclick="modificarCliente()">
-
-            Modificar Cliente
-
-        </button>
+        <button onclick="guardarCliente()">Guardar Cliente</button>
+        <button onclick="modificarCliente()"> Modificar Cliente</button>
+        <button onclick="buscarCliente()">Buscar Cliente</button>
 
         <!-- TABLA -->
 

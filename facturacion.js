@@ -256,6 +256,53 @@ function modificarCliente(){
     }
 
 }
+/* =========================
+   BUSCAR CLIENTE
+========================= */
+
+function buscarCliente(){
+
+    // OBTENER CEDULA
+
+    let cedulaBuscar =
+    document.getElementById("cedulaCliente").value;
+
+    let encontrado = false;
+
+    // RECORRER CLIENTES
+
+    for(let i=0; i<clientes.length; i++){
+
+        // COMPARAR CEDULAS
+
+        if(clientes[i].cedula == cedulaBuscar){
+
+            // LLENAR INPUTS
+
+            document.getElementById("nombreCliente").value =
+            clientes[i].nombre;
+
+            document.getElementById("telefonoCliente").value =
+            clientes[i].telefono;
+
+            document.getElementById("correoCliente").value =
+            clientes[i].correo;
+
+            encontrado = true;
+
+        }
+
+    }
+
+    // VALIDAR SI EXISTE
+
+    if(encontrado == false){
+
+        alert("Cliente no encontrado");
+
+    }
+
+}
 
 
 /* =========================
@@ -331,44 +378,11 @@ function limpiarClientes(){
 
     document.getElementById("cedulaCliente")
     .value = "";
+    document.getElementById("telefonoCliente")
+    .value = "";
+    document.getElementById("correoCliente")
+    .value = "";
 
 }
 
 
-/* =========================
-   SOLO LETRAS
-========================= */
-
-function soloLetras(event){
-
-    let tecla = event.key;
-
-    let letras =
-    "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ";
-
-    if(letras.indexOf(tecla) == -1){
-
-        return false;
-
-    }
-
-}
-
-
-/* =========================
-   SOLO NUMEROS
-========================= */
-
-function soloNumeros(event){
-
-    let tecla = event.key;
-
-    let numeros = "0123456789";
-
-    if(numeros.indexOf(tecla) == -1){
-
-        return false;
-
-    }
-
-}
