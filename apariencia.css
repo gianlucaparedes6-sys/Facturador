@@ -116,3 +116,21 @@ td{
     }
 
 }
+.menu{
+    background:#1f3c88;
+    padding:15px;
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+    border-radius:10px;
+}
+
+.menu button{
+    background:white;
+    color:#1f3c88;
+    font-weight:bold;
+}
+
+.oculto{
+    display:none;
+}
