@@ -63,23 +63,64 @@
 
         <!-- CLIENTES -->
 
-        <div id="clientes" class="seccion oculto">
+        <!-- CLIENTES -->
 
-            <div class="card">
+<div id="clientes" class="seccion oculto">
 
-                <h2>Clientes</h2>
+    <div class="card">
 
-                <input type="text" placeholder="Nombre">
+        <h2>Clientes</h2>
 
-                <input type="text" placeholder="Cédula">
+        <!-- INPUT -->
+        <!-- NOMBRE, CEDULA, TELEFONO, CORREO -->
+        <input type="text" id="nombreCliente" placeholder="Nombre" onkeypress="soloLetras(event)">
 
-                <button>
-                    Guardar Cliente
-                </button>
+        <input type="text" id="cedulaCliente" placeholder="Cédula" onkeypress="soloNumeros(event)">
 
-            </div>
+        <input type="text" id="telefonoCliente" placeholder="Teléfono" onkeypress="soloNumeros(event)">
 
-        </div>
+        <input type="email" id="correoCliente" placeholder="Correo">
+        <!-- BOTON -->
+
+        <button onclick="guardarCliente()">
+
+            Guardar Cliente
+
+        </button>
+        <button onclick="modificarCliente()">
+
+            Modificar Cliente
+
+        </button>
+
+        <!-- TABLA -->
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Nombre</th>
+                    <th>Cédula</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    <th>Eliminar</th>
+
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tablaClientes">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
 
 
         <!-- FACTURACION -->
@@ -261,6 +302,6 @@
 
     </div>
 
-    
+    <script src="facturacion.js"></script>
 
 </body>
