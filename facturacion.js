@@ -11,6 +11,7 @@ function agregarProducto(){
     let precio =
     parseFloat(document.getElementById("precio").value);
 
+    
     if(producto == "" || precio <= 0){
 
         alert("Complete los datos");
