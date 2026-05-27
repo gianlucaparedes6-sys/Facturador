@@ -166,11 +166,9 @@ let clientes = [];
 
 function guardarCliente(){
 
-    let nombre =
-    document.getElementById("nombreCliente").value;
+    let nombre = document.getElementById("nombreCliente").value;
 
-    let cedula =
-    document.getElementById("cedulaCliente").value;
+    let cedula = document.getElementById("cedulaCliente").value;
 
     // VALIDACIONES
 
