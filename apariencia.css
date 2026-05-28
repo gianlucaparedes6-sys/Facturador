@@ -134,3 +134,82 @@ td{
 .oculto{
     display:none;
 }
+/* CUADROS PORTADA */
+
+.menu-cuadros{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+
+}
+
+.cuadro{
+
+    transition:0.3s;
+
+    cursor:pointer;
+
+}
+
+.cuadro:hover{
+
+    transform:scale(1.05);
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.cuadro:hover h1,
+.cuadro:hover p{
+
+    color:white;
+
+}
+/* =========================
+   CARDS DESPLEGABLES
+========================= */
+
+.menu-cuadros{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:15px;
+
+}
+
+.cuadro{
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+.cuadro:hover{
+
+    transform:scale(1.03);
+
+}
+
+.contenido-card{
+
+    display:none;
+
+    margin-top:10px;
+
+}
+
+.cuadro.activa .contenido-card{
+
+    display:block;
+
+}

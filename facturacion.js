@@ -383,5 +383,17 @@ function limpiarClientes(){
     .value = "";
 
 }
+/* =========================
+   ABRIR CARD
+========================= */
+
+function abrirCard(titulo){
+
+    let card =
+    titulo.closest(".cuadro");
+
+    card.classList.toggle("activa");
+
+}
 
 
