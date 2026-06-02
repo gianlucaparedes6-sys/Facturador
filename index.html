@@ -368,14 +368,34 @@
         <div id="productos" class="seccion oculto">
 
             <div class="card">
-
                 <h2>Productos</h2>
 
-                <input type="text" placeholder="Producto">
+                <button onclick="mostrarTodos()">Todos</button>
+                <button onclick="mostrarConIva()">Con IVA</button>
+                <button onclick="mostrarSinIva()">Sin IVA</button>
 
-                <input type="number" placeholder="Precio">
+                <table border="1">
+                <thead>
+                <th>Producto</th>
+            <th>Precio</th>
+            <th>IVA %</th>
+            <th>IVA $</th>
+            <th>Total</th>
+            </tr>
+            </thead>
+            <tbody id="tablaProductosLista"></tbody>
+            </table>    
 
-                <button>
+                <input type="text" id="nuevoProducto" placeholder="Producto">
+
+                <input type="number" id="nuevoPrecio" placeholder="Precio">
+
+                <select id="nuevoIva">
+                    <option value="true">Con IVA</option>
+                    <option value="false">Sin IVA</option>
+                </select>
+
+                <button onclick="agregarProductoLista()">
                     Guardar Producto
                 </button>
 
