@@ -5,7 +5,7 @@
 let productos = [];
 
 /* =========================
-   AGREGAR PRODUCTO
+   AGREGAR PRODUCTO FACTURA
 ========================= */
 
 function agregarProducto() {
@@ -14,28 +14,26 @@ function agregarProducto() {
     let cantidad = parseFloat(document.getElementById("cantidad").value);
     let precio = parseFloat(document.getElementById("precio").value);
 
-    if (producto == "" || precio <= 0 || cantidad <= 0) {
+    if (producto === "" || cantidad <= 0 || precio <= 0) {
         alert("Complete los datos correctamente");
         return;
     }
 
     let subtotal = cantidad * precio;
 
-    let item = {
+    productos.push({
         producto: producto,
         cantidad: cantidad,
         precio: precio,
         subtotal: subtotal
-    };
-
-    productos.push(item);
+    });
 
     pintarTabla();
     limpiarInputs();
 }
 
 /* =========================
-   PINTAR TABLA FACTURA
+   TABLA FACTURA
 ========================= */
 
 function pintarTabla() {
@@ -51,29 +49,23 @@ function pintarTabla() {
             <td>$ ${productos[i].precio.toFixed(2)}</td>
             <td>$ ${productos[i].subtotal.toFixed(2)}</td>
             <td>
-                <button class="eliminar" onclick="eliminarProducto(${i})">X</button>
+                <button onclick="eliminarProducto(${i})">X</button>
             </td>
         </tr>
         `;
     }
 
     document.getElementById("tablaProductos").innerHTML = contenido;
-
     calcularTotales();
 }
 
-/* =========================
-   ELIMINAR PRODUCTO
-========================= */
-
 function eliminarProducto(posicion) {
-
     productos.splice(posicion, 1);
     pintarTabla();
 }
 
 /* =========================
-   CALCULAR TOTALES
+   TOTALES + IVA
 ========================= */
 
 function calcularTotales() {
@@ -84,7 +76,7 @@ function calcularTotales() {
         subtotal += productos[i].subtotal;
     }
 
-    let ivaPorcentaje = parseFloat(document.getElementById("iva").value);
+    let ivaPorcentaje = parseFloat(document.getElementById("iva").value) || 0;
 
     let iva = subtotal * (ivaPorcentaje / 100);
     let total = subtotal + iva;
@@ -95,11 +87,10 @@ function calcularTotales() {
 }
 
 /* =========================
-   LIMPIAR INPUTS
+   LIMPIAR FACTURA
 ========================= */
 
 function limpiarInputs() {
-
     document.getElementById("producto").value = "";
     document.getElementById("cantidad").value = 1;
     document.getElementById("precio").value = "";
@@ -126,32 +117,26 @@ function mostrarSeccion(id) {
 
 let clientes = [];
 
-/* GUARDAR CLIENTE */
-
 function guardarCliente() {
 
     let nombre = document.getElementById("nombreCliente").value;
     let cedula = document.getElementById("cedulaCliente").value;
 
-    if (nombre == "" || cedula == "") {
+    if (nombre === "" || cedula === "") {
         alert("Complete los datos");
         return;
     }
 
-    let cliente = {
+    clientes.push({
         nombre: nombre,
         cedula: cedula,
         telefono: document.getElementById("telefonoCliente").value,
         correo: document.getElementById("correoCliente").value
-    };
-
-    clientes.push(cliente);
+    });
 
     pintarClientes();
     limpiarClientes();
 }
-
-/* MODIFICAR CLIENTE */
 
 function modificarCliente() {
 
@@ -160,7 +145,7 @@ function modificarCliente() {
 
     for (let i = 0; i < clientes.length; i++) {
 
-        if (clientes[i].cedula == cedulaBuscar) {
+        if (clientes[i].cedula === cedulaBuscar) {
 
             clientes[i].nombre = document.getElementById("nombreCliente").value;
             clientes[i].telefono = document.getElementById("telefonoCliente").value;
@@ -179,8 +164,6 @@ function modificarCliente() {
     }
 }
 
-/* BUSCAR CLIENTE */
-
 function buscarCliente() {
 
     let cedulaBuscar = document.getElementById("cedulaCliente").value;
@@ -188,7 +171,7 @@ function buscarCliente() {
 
     for (let i = 0; i < clientes.length; i++) {
 
-        if (clientes[i].cedula == cedulaBuscar) {
+        if (clientes[i].cedula === cedulaBuscar) {
 
             document.getElementById("nombreCliente").value = clientes[i].nombre;
             document.getElementById("telefonoCliente").value = clientes[i].telefono;
@@ -203,8 +186,6 @@ function buscarCliente() {
     }
 }
 
-/* PINTAR CLIENTES */
-
 function pintarClientes() {
 
     let contenido = "";
@@ -217,9 +198,7 @@ function pintarClientes() {
             <td>${clientes[i].cedula}</td>
             <td>${clientes[i].telefono}</td>
             <td>${clientes[i].correo}</td>
-            <td>
-                <button class="eliminar" onclick="eliminarCliente(${i})">X</button>
-            </td>
+            <td><button onclick="eliminarCliente(${i})">X</button></td>
         </tr>
         `;
     }
@@ -227,14 +206,10 @@ function pintarClientes() {
     document.getElementById("tablaClientes").innerHTML = contenido;
 }
 
-/* ELIMINAR CLIENTE */
-
 function eliminarCliente(posicion) {
     clientes.splice(posicion, 1);
     pintarClientes();
 }
-
-/* LIMPIAR CLIENTES */
 
 function limpiarClientes() {
 
@@ -245,26 +220,27 @@ function limpiarClientes() {
 }
 
 /* =========================
-   ABRIR CARD
+   PRODUCTOS (CON / SIN IVA)
 ========================= */
 
-function abrirCard(titulo) {
+let listaProductos = [
+  { nombre: "Arroz", precio: 2.50, iva: true },
+  { nombre: "Leche", precio: 1.20, iva: true },
+  { nombre: "Pan", precio: 0.50, iva: false },
+  { nombre: "Queso", precio: 3.00, iva: true },
+  { nombre: "Agua", precio: 0.80, iva: false }
+];
 
-    let card = titulo.closest(".cuadro");
-    card.classList.toggle("activa");
-}
 function mostrarTodos() {
-  pintarProductos(listaProductos);
+    pintarProductos(listaProductos);
 }
 
 function mostrarConIva() {
-  let filtrados = listaProductos.filter(p => p.iva === true);
-  pintarProductos(filtrados);
+    pintarProductos(listaProductos.filter(p => p.iva));
 }
 
 function mostrarSinIva() {
-  let filtrados = listaProductos.filter(p => p.iva === false);
-  pintarProductos(filtrados);
+    pintarProductos(listaProductos.filter(p => !p.iva));
 }
 
 function pintarProductos(lista) {
@@ -274,9 +250,7 @@ function pintarProductos(lista) {
     for (let i = 0; i < lista.length; i++) {
 
         let ivaPorcentaje = lista[i].iva ? 15 : 0;
-
         let ivaValor = lista[i].precio * (ivaPorcentaje / 100);
-
         let total = lista[i].precio + ivaValor;
 
         contenido += `
@@ -292,13 +266,7 @@ function pintarProductos(lista) {
 
     document.getElementById("tablaProductosLista").innerHTML = contenido;
 }
-let listaProductos = [
-  { nombre: "Arroz", precio: 2.50, iva: true },
-  { nombre: "Leche", precio: 1.20, iva: true },
-  { nombre: "Pan", precio: 0.50, iva: false },
-  { nombre: "Queso", precio: 3.00, iva: true },
-  { nombre: "Agua", precio: 0.80, iva: false }
-];
+
 function agregarProductoLista() {
 
     let nombre = document.getElementById("nuevoProducto").value;
@@ -310,19 +278,7 @@ function agregarProductoLista() {
         return;
     }
 
-    listaProductos.push({
-        nombre: nombre,
-        precio: precio,
-        iva: iva
-    });
+    listaProductos.push({ nombre, precio, iva });
 
     pintarProductos(listaProductos);
-
-    limpiarFormularioProductos();
-}
-function limpiarFormularioProductos() {
-
-    document.getElementById("nuevoProducto").value = "";
-    document.getElementById("nuevoPrecio").value = "";
-    document.getElementById("nuevoIva").value = "true";
 }
