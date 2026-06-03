@@ -110,12 +110,11 @@ td{
 }
 
 @media(max-width:900px){
-
     .grid{
         grid-template-columns:1fr;
     }
-
 }
+
 .menu{
     background:#1f3c88;
     padding:15px;
@@ -133,4 +132,47 @@ td{
 
 .oculto{
     display:none;
+}
+
+/* ==========================================================================
+   ESTILOS DE OPTIMIZACIÓN PARA IMPRESIÓN (PDF)
+   ========================================================================== */
+
+@media print {
+
+    body {
+        background: white !important;
+        padding: 0;
+    }
+
+    /* OCULTAR ELEMENTOS QUE NO SE IMPRIMEN */
+    .menu,
+    input,
+    button,
+    label,
+    h2,
+    br {
+        display: none !important;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .contenedor {
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* SOLO LO IMPRIMIBLE */
+    #seccionImprimible {
+        border: 1px solid #000 !important;
+        background: white !important;
+        padding: 20px !important;
+    }
+
+    /* TABLAS EN IMPRESIÓN */
+    th {
+        background: #1f3c88 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 }
