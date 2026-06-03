@@ -1,178 +1,264 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial;
+/* ==========================================================================
+   ESTILOS GENERALES - ESTILO TECNOLÓGICO / FUTURISTA
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
 
-body{
-    background:#1ecdb6;
-    padding:20px;
+body {
+    background: #0d1117; /* Fondo oscuro tipo GitHub/VSC */
+    color: #c9d1d9; /* Texto claro de baja fatiga visual */
+    padding: 20px;
 }
 
-.contenedor{
-    max-width:1200px;
-    margin:auto;
+.contenedor {
+    max-width: 1200px;
+    margin: auto;
 }
 
-.card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    margin-bottom:20px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+/* Tarjetas con efecto de cristal esmerilado y borde de neón sutil */
+.card {
+    background: #161b22;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #30363d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-h2{
-    margin-bottom:20px;
-    color:#0b2c81;
+h1 {
+    color: #58a6ff; /* Azul tecnológico brillante */
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 2.2rem;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
+h2 {
+    margin-bottom: 20px;
+    color: #58a6ff;
+    font-weight: 600;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 10px;
 }
 
-input{
-    width:100%;
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:5px;
+.titulo {
+    text-align: center;
+    padding: 20px;
+    background: #161b22;
+    border-radius: 12px;
+    border: 1px solid #58a6ff;
+    box-shadow: 0 0 15px rgba(88, 166, 255, 0.15);
 }
 
-button{
-    background:#50eb25;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:5px;
-    cursor:pointer;
+.titulo p {
+    color: #8b949e;
+    font-size: 1.1rem;
+    margin-top: 5px;
 }
 
-button:hover{
-    background:#26d81d;
+.titulo h4 {
+    margin-top: 15px;
+    color: #58a6ff;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
 }
 
-.boton{
-    display:flex;
-    align-items:end;
+/* Tablas con diseño de matriz de datos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #0d1117;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #30363d;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
+th {
+    background: #21262d;
+    color: #58a6ff;
+    padding: 12px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid #30363d;
 }
 
-th{
-    background:#2563eb;
-    color:white;
-    padding:12px;
+td {
+    padding: 12px;
+    border-bottom: 1px solid #21262d;
+    color: #c9d1d9;
+    text-align: center;
 }
 
-td{
-    padding:10px;
-    border-bottom:1px solid #ddd;
-    text-align:center;
+/* Controles, Inputs y Selects Futuristas */
+input, select {
+    width: 100%;
+    padding: 12px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #f0f6fc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
-.totales{
-    display:flex;
-    justify-content:flex-end;
+input:focus, select:focus {
+    outline: none;
+    border-color: #58a6ff;
+    box-shadow: 0 0 8px rgba(88, 166, 255, 0.4);
+    background: #161b22;
 }
 
-.box-total{
-    width:350px;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+/* Botones con transiciones de interfaz de comandos */
+button {
+    background: #21262d;
+    color: #c9d1d9;
+    border: 1px solid #f0f6fc;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
 }
 
-.box-total h3{
-    margin-bottom:15px;
+button:hover {
+    background: #58a6ff;
+    color: #0d1117;
+    border-color: #58a6ff;
+    box-shadow: 0 0 12px rgba(88, 166, 255, 0.4);
 }
 
-.linea{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:10px;
-    gap:10px;
+/* Estilo específico para botones de acción peligrosa o eliminación (X) */
+td button {
+    background: #21262d;
+    color: #f85149;
+    border: 1px solid #f85149;
+    padding: 5px 10px;
 }
 
-.eliminar{
-    background:red;
+td button:hover {
+    background: #f85149;
+    color: #ffffff;
+    border-color: #f85149;
+    box-shadow: 0 0 10px rgba(248, 81, 73, 0.4);
 }
 
-.eliminar:hover{
-    background:darkred;
+/* Menú de navegación estilo Dashboard */
+.menu {
+    background: #161b22;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+}
+
+.menu button {
+    background: transparent;
+    color: #8b949e;
+    border: 1px solid transparent;
+}
+
+.menu button:hover {
+    color: #58a6ff;
+    background: #21262d;
+    border-color: #30363d;
+    box-shadow: none;
+}
+
+/* Grid de distribución en Facturación */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    align-items: end;
 }
 
 @media(max-width:900px){
-    .grid{
-        grid-template-columns:1fr;
+    .grid {
+        grid-template-columns: 1fr;
     }
 }
 
-.menu{
-    background:#1f3c88;
-    padding:15px;
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
-    border-radius:10px;
-}
-
-.menu button{
-    background:white;
-    color:#1f3c88;
-    font-weight:bold;
-}
-
-.oculto{
-    display:none;
+.oculto {
+    display: none;
 }
 
 /* ==========================================================================
-   ESTILOS DE OPTIMIZACIÓN PARA IMPRESIÓN (PDF)
+   ESTILOS EXCLUSIVOS PARA EL CONTENEDOR DEL QUIZ TECNOLÓGICO
+   /* ==========================================================================
+   ESTILOS PARA EL PIE DE PÁGINA (FOOTER)
    ========================================================================== */
+.pie-pagina {
+    margin-top: 50px;
+    padding: 20px;
+    background: #161b22;
+    border-top: 1px solid #30363d;
+    text-align: center;
+    border-radius: 8px;
+}
 
+.pie-pagina p {
+    color: #8b949e;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    margin: 4px 0;
+}
+
+.pie-pagina span {
+    color: #58a6ff; /* Resalta los nombres en azul tecnológico */
+    font-weight: 600;
+}
+
+/* Ocultar los créditos automáticamente al momento de imprimir la factura */
 @media print {
-
-    body {
-        background: white !important;
-        padding: 0;
-    }
-
-    /* OCULTAR ELEMENTOS QUE NO SE IMPRIMEN */
-    .menu,
-    input,
-    button,
-    label,
-    h2,
-    br {
+    .pie-pagina {
         display: none !important;
     }
+}
+/* ==========================================================================
+   CORRECCIÓN CRÍTICA DE CONTRASTE PARA EL MINI QUIZ
+   ========================================================================== */
 
-    /* CONTENEDOR PRINCIPAL */
-    .contenedor {
-        max-width: 100% !important;
-        margin: 0 !important;
-    }
+/* Forzar que el texto de la pregunta (arriba de las opciones) sea visible */
+#contenedorQuiz p {
+    color: #58a6ff !important; /* Azul tecnológico brillante */
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
 
-    /* SOLO LO IMPRIMIBLE */
-    #seccionImprimible {
-        border: 1px solid #000 !important;
-        background: white !important;
-        padding: 20px !important;
-    }
+/* Forzar que los cuadros de las respuestas tengan fondo blanco y LETRA NEGRA */
+#contenedorQuiz label {
+    display: block !important;
+    background-color: #ffffff !important; /* Fondo blanco para las opciones */
+    color: #000000 !important;            /* LETRA NEGRA IMPECABLE */
+    border: 1px solid #30363d !important;
+    padding: 12px 15px !important;
+    margin: 8px 0 !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;          /* Texto un poco más grueso para leer mejor */
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
 
-    /* TABLAS EN IMPRESIÓN */
-    th {
-        background: #1f3c88 !important;
-        color: white !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
+/* Efecto al pasar el mouse por encima de una opción antes de marcarla */
+#contenedorQuiz label:hover {
+    background-color: #f0f4f8 !important; /* Gris muy claro al pasar el cursor */
+    border-color: #58a6ff !important;
+}
+
+/* Asegurar que el botón circular de selección se vea bien */
+#contenedorQuiz input[type="radio"] {
+    margin-right: 12px !important;
+    transform: scale(1.1);
+    accent-color: #1f3c88;
 }

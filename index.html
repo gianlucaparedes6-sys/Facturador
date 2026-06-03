@@ -23,43 +23,136 @@
         <button onclick="mostrarSeccion('productos')">
             Productos
         </button>
+        <button onclick="mostrarSeccion('teoria')">
+        Material de Estudio
+        </button>
+        <button onclick="mostrarSeccion('quiz')">
+        Mini Quiz
+        </button>
     </div>
+    
 
     <div class="contenedor">
 
         <div class="titulo">
-            <h1>Mini Sistema de Facturación</h1>
-            <p>Bienvenido al sistema</p>
-            <h4>creado por </h4>
-            <p>Jefferson Quispe </p>
-            <p>Gianluca Paredes</p>
+            <h1>Mini Sistema de Facturación</h1>            
         </div>
         <br><br>
+  <div id="quiz" class="seccion oculto">
+        <h2>Mini Quiz - Sistema de Facturación</h2>
+        
+        <div id="contenedorQuiz"></div>
 
-        <div id="portada" class="seccion oculto">
-            <h2>Ingresa el primer producto </h2>
-            <input type="text" id="primerProducto" placeholder="Nombre del producto">
-            <div>
-                <label>Precio el producto sin iva </label>
-                <input type="number" id="precioProducto">
-            </div>
-            <br>
+        <p style="margin-top: 20px; display: flex; gap: 15px;">
+            <button onclick="corregir()" id="btnEnviar" style="background:#1f3c88; color:white; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; flex: 1;">
+                Enviar y Calcular Nota (Sobre 100)
+            </button>
+            
+            <button onclick="reiniciarQuiz()" id="btnReiniciar" style="background:#50eb25; color:white; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; flex: 1; display: none;">
+                Nuevo Intento 🔄
+            </button>
+        </p>
 
-            <h2>Ingresa el segundo producto </h2>
-            <input type="text" id="segundoProducto" placeholder="Nombre del producto">
-            <div>
-                <label>Precio del producto sin iva </label>
-                <input type="number" id="precioProducto2">
-                <button onclick="guardarProductos()">Guardar productos</button>
-            </div><br><br>
+        <div id="resultado"></div>
+    </div>
+</div>
+
+</div>
+    </div>
+        <div id="teoria" class="seccion oculto">
+            
 
             <div class="card">
-                <h1>SUBTOTAL</h1>
-                <p>Es la suma de los productos sin aplicar el iva o restar cualquier descuento</p>
+                <h1>¿Qué es la Facturación?</h1>
+                <p>
+                    La facturación es el proceso mediante el cual una empresa registra
+                    la venta de productos o servicios a un cliente. Su objetivo es
+                    controlar ingresos, calcular impuestos y generar comprobantes legales.
+                </p>
             </div>
 
-            <div id="resultadoPortada"></div>
-            
+            <div class="card">
+                <h1>Elementos de una Factura</h1>
+
+                <ul>
+                    <li>Datos del cliente</li>
+                    <li>Descripción de productos</li>
+                    <li>Cantidad</li>
+                    <li>Precio unitario</li>
+                    <li>Subtotal</li>
+                    <li>IVA</li>
+                    <li>Total a pagar</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h1>Fórmula del Subtotal</h1>
+
+                <p><strong>Subtotal = Cantidad × Precio</strong></p>
+
+                <p>Ejemplo:</p>
+
+                <p>
+                    3 cuadernos × $2.00 = $6.00
+                </p>
+            </div>
+
+            <div class="card">
+                <h1>Fórmula del IVA</h1>
+
+                <p><strong>IVA = Subtotal × Porcentaje IVA</strong></p>
+
+                <p>Ejemplo:</p>
+
+                <p>
+                    $100 × 15% = $15
+                </p>
+            </div>
+
+            <div class="card">
+                <h1>Fórmula del Total</h1>
+
+                <p><strong>Total = Subtotal + IVA</strong></p>
+
+                <p>Ejemplo:</p>
+
+                <p>
+                    Subtotal = $100<br>
+                    IVA = $15<br>
+                    Total = $115
+                </p>
+            </div>
+
+            <div class="card">
+                <h1>Ejercicio Resuelto</h1>
+
+                <p>
+                    Una tienda vende:
+                </p>
+
+                <ul>
+                    <li>2 teclados a $20</li>
+                    <li>1 mouse a $10</li>
+                </ul>
+
+                <p>
+                    Subtotal = (2 × 20) + 10 = $50
+                </p>
+
+                <p>
+                    IVA 15% = $7.50
+                </p>
+
+                <p>
+                    Total = $57.50
+                </p>
+
+                 <p>
+                La facturación permite registrar ventas de manera organizada,
+                calcular impuestos y obtener el valor final que debe pagar el cliente.
+                Es una herramienta fundamental para cualquier negocio.
+            </p>
+            </div>
             <div class="card">
                 <h1>IVA</h1>
                 <p>
@@ -85,7 +178,45 @@
                     salud y transporte
                 </p>
             </div>
+            <div class="card">
+                <h1>SUBTOTAL</h1>
+                <p>Es la suma de los productos sin aplicar el iva o restar cualquier descuento</p>
+            </div>
+            <div class="card">
+            <h1>Conclusión</h1>
 
+            <p>
+                La facturación permite registrar ventas de manera organizada,
+                calcular impuestos y obtener el valor final que debe pagar el cliente.
+                Es una herramienta fundamental para cualquier negocio.
+            </p>
+        </div>
+
+        </div>
+        
+
+        <div id="portada" class="seccion oculto">
+            <h2>Ingresa el primer producto </h2>
+            <input type="text" id="primerProducto" placeholder="Nombre del producto">
+            <div>
+                <label>Precio el producto sin iva </label>
+                <input type="number" id="precioProducto">
+            </div>
+            <br>
+
+            <h2>Ingresa el segundo producto </h2>
+            <input type="text" id="segundoProducto" placeholder="Nombre del producto">
+            <div>
+                <label>Precio del producto sin iva </label>
+                <input type="number" id="precioProducto2">
+                <button onclick="guardarProductos()">Guardar productos</button>
+            </div><br><br>
+
+            
+
+            <div id="resultadoPortada"></div>
+            
+            
             <div class="card">
                 <h2>Cálculo de IVA por Producto (Portada)</h2>
                 <div style="margin-bottom: 20px;">
@@ -278,7 +409,12 @@
 
     </div>
 
-    <script src="facturacion.js"></script>
-</body>
+    <footer class="pie-pagina">
+            <p>SISTEMA DE FACTURACION</p>
+            <p>Desarrollado por: <span>Jefferson Quispe</span> & <span>Gianluca Paredes</span></p>
+        </footer>
 
+    </div> <script src="facturacion.js"></script>
+    <script src="quiz.js"></script>
+</body>
 </html>
