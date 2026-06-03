@@ -249,68 +249,71 @@
 
 </div>
 
-        <!-- CLIENTES -->
+                <!-- CLIENTES -->
 
-<div id="clientes" class="seccion oculto">
+        <div id="clientes" class="seccion oculto">
 
-    <div class="card">
-
-        <h2>Clientes</h2>
-
-        <!-- INPUT -->
-        <!-- NOMBRE, CEDULA, TELEFONO, CORREO -->
-        <input type="text" id="nombreCliente" placeholder="Nombre">
-
-        <input type="text" id="cedulaCliente" placeholder="Cédula">
-
-        <input type="text" id="telefonoCliente" placeholder="Teléfono">
-
-        <input type="email" id="correoCliente" placeholder="Correo">
-        <!-- BOTON -->
-
-        <button onclick="guardarCliente()">Guardar Cliente</button>
-        <button onclick="modificarCliente()"> Modificar Cliente</button>
-        <button onclick="buscarCliente()">Buscar Cliente</button>
-
-        <!-- TABLA -->
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Cédula</th>
-                            <th>Telefono</th>
-                            <th>Correo</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaClientes"></tbody>
-                </table>
-            </div>
-        </div>
-
-        <div id="facturacion" class="seccion oculto">
             <div class="card">
-                <h2>Datos del Cliente</h2>
-                <div class="grid">
-                    <div>
-                        <label>Nombre</label>
-                        <input type="text" id="cliente">
-                    </div>
-                    <div>
-                        <label>Cédula / RUC</label>
-                        <input type="text" id="cedula">
-                    </div>
-                    <div>
-                        <label>Teléfono</label>
-                        <input type="text" id="telefono">
-                    </div>
-                    <div>
-                        <label>Correo</label>
-                        <input type="email" id="correo">
+
+                <h2>Clientes</h2>
+
+                <!-- INPUT -->
+                <!-- NOMBRE, CEDULA, TELEFONO, CORREO -->
+                <input type="text" id="nombreCliente" placeholder="Nombre">
+
+                <input type="text" id="cedulaCliente" placeholder="Cédula">
+
+                <input type="text" id="telefonoCliente" placeholder="Teléfono">
+
+                <input type="email" id="correoCliente" placeholder="Correo">
+                <!-- BOTON -->
+
+                <button onclick="guardarCliente()">Guardar Cliente</button>
+                <button onclick="modificarCliente()"> Modificar Cliente</button>
+                <button onclick="buscarCliente()">Buscar Cliente</button>
+
+                <!-- TABLA -->
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Cédula</th>
+                                    <th>Telefono</th>
+                                    <th>Correo</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaClientes"></tbody>
+                        </table>
                     </div>
                 </div>
+
+                <div id="facturacion" class="seccion oculto">
+                <div class="card">
+            <h2>Datos del Cliente</h2>
+            <div class="grid">
+                <div>
+                    <label>Cédula / RUC</label>
+                    <div style="display: flex; gap: 5px;">
+                        <input type="text" id="cedula" placeholder="Buscar cédula...">
+                        <button onclick="buscarClienteFactura()" style="padding: 10px; background: #58a6ff; color: #0d1117;">🔍</button>
+                    </div>
+                </div>
+                <div>
+                    <label>Nombre</label>
+                    <input type="text" id="cliente">
+                </div>
+                <div>
+                    <label>Teléfono</label>
+                    <input type="text" id="telefono">
+                </div>
+                <div>
+                    <label>Correo</label>
+                    <input type="email" id="correo">
+                </div>
             </div>
+        </div>
 
             <div class="card">
                 <h2>Detalle de Productos</h2>
@@ -386,6 +389,7 @@
             <th>IVA %</th>
             <th>IVA $</th>
             <th>Total</th>
+            <th>Acción</th>
             </tr>
             </thead>
             <tbody id="tablaProductosLista"></tbody>

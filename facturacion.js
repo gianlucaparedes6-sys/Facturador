@@ -1,13 +1,8 @@
-/* =========================
-   FACTURACIÓN
-========================= */
-
+let ultimoProductoEliminado = null;
 let productos = [];
-
 /* =========================
    AGREGAR PRODUCTO FACTURA
 ========================= */
-
 function agregarProducto() {
 
     let producto = document.getElementById("producto").value;
@@ -31,11 +26,9 @@ function agregarProducto() {
     pintarTabla();
     limpiarInputs();
 }
-
 /* =========================
    TABLA FACTURA
 ========================= */
-
 function pintarTabla() {
 
     let contenido = "";
@@ -63,11 +56,9 @@ function eliminarProducto(posicion) {
     productos.splice(posicion, 1);
     pintarTabla();
 }
-
 /* =========================
    TOTALES + IVA
 ========================= */
-
 function calcularTotales() {
 
     let subtotal = 0;
@@ -85,21 +76,17 @@ function calcularTotales() {
     document.getElementById("valorIva").innerHTML = "$ " + iva.toFixed(2);
     document.getElementById("total").innerHTML = "$ " + total.toFixed(2);
 }
-
 /* =========================
    LIMPIAR FACTURA
 ========================= */
-
 function limpiarInputs() {
     document.getElementById("producto").value = "";
     document.getElementById("cantidad").value = 1;
     document.getElementById("precio").value = "";
 }
-
 /* =========================
    MOSTRAR SECCIONES
 ========================= */
-
 function mostrarSeccion(id) {
 
     let secciones = document.getElementsByClassName("seccion");
@@ -110,15 +97,12 @@ function mostrarSeccion(id) {
 
     document.getElementById(id).style.display = "block";
 }
-
 /* =========================
    CLIENTES
 ========================= */
-
-let clientes = [];
+let clientes = JSON.parse(localStorage.getItem("clientes_sistema")) || [];
 
 function guardarCliente() {
-
     let nombre = document.getElementById("nombreCliente").value;
     let cedula = document.getElementById("cedulaCliente").value;
 
@@ -134,8 +118,42 @@ function guardarCliente() {
         correo: document.getElementById("correoCliente").value
     });
 
+    // Guardar en el navegador
+    localStorage.setItem("clientes_sistema", JSON.stringify(clientes));
+
     pintarClientes();
     limpiarClientes();
+}
+
+function modificarCliente() {
+    let cedulaBuscar = document.getElementById("cedulaCliente").value;
+    let encontrado = false;
+
+    for (let i = 0; i < clientes.length; i++) {
+        if (clientes[i].cedula === cedulaBuscar) {
+            clientes[i].nombre = document.getElementById("nombreCliente").value;
+            clientes[i].telefono = document.getElementById("telefonoCliente").value;
+            clientes[i].correo = document.getElementById("correoCliente").value;
+            encontrado = true;
+        }
+    }
+
+    if (encontrado) {
+        // Guardar cambios en el navegador
+        localStorage.setItem("clientes_sistema", JSON.stringify(clientes));
+        pintarClientes();
+        limpiarClientes();
+        alert("Cliente modificado");
+    } else {
+        alert("Cliente no encontrado");
+    }
+}
+
+function eliminarCliente(posicion) {
+    clientes.splice(posicion, 1);
+    // Guardar lista actualizada en el navegador
+    localStorage.setItem("clientes_sistema", JSON.stringify(clientes));
+    pintarClientes();
 }
 
 function modificarCliente() {
@@ -218,18 +236,17 @@ function limpiarClientes() {
     document.getElementById("telefonoCliente").value = "";
     document.getElementById("correoCliente").value = "";
 }
-
 /* =========================
    PRODUCTOS (CON / SIN IVA)
 ========================= */
-
-let listaProductos = [
+const productosPorDefecto = [
   { nombre: "Arroz", precio: 2.50, iva: true },
   { nombre: "Leche", precio: 1.20, iva: true },
   { nombre: "Pan", precio: 0.50, iva: false },
   { nombre: "Queso", precio: 3.00, iva: true },
   { nombre: "Agua", precio: 0.80, iva: false }
 ];
+let listaProductos = JSON.parse(localStorage.getItem("productos_sistema")) || productosPorDefecto;
 
 function mostrarTodos() {
     pintarProductos(listaProductos);
@@ -242,13 +259,13 @@ function mostrarConIva() {
 function mostrarSinIva() {
     pintarProductos(listaProductos.filter(p => !p.iva));
 }
-
+/* =========================
+   PRODUCTOS (CON / SIN IVA)
+========================= */
 function pintarProductos(lista) {
-
     let contenido = "";
 
     for (let i = 0; i < lista.length; i++) {
-
         let ivaPorcentaje = lista[i].iva ? 15 : 0;
         let ivaValor = lista[i].precio * (ivaPorcentaje / 100);
         let total = lista[i].precio + ivaValor;
@@ -260,11 +277,43 @@ function pintarProductos(lista) {
             <td>${ivaPorcentaje}%</td>
             <td>$${ivaValor.toFixed(2)}</td>
             <td>$${total.toFixed(2)}</td>
+            <td>
+                <button onclick="eliminarProductoLista(${i})">X</button>
+            </td>
         </tr>
         `;
     }
 
     document.getElementById("tablaProductosLista").innerHTML = contenido;
+}
+
+function agregarProductoLista() {
+    let nombre = document.getElementById("nuevoProducto").value;
+    let precio = parseFloat(document.getElementById("nuevoPrecio").value);
+    let iva = document.getElementById("nuevoIva").value === "true";
+
+    if (nombre === "" || isNaN(precio) || precio <= 0) {
+        alert("Completa los datos correctamente");
+        return;
+    }
+
+    listaProductos.push({ nombre, precio, iva });
+
+    // Guardar en el navegador
+    localStorage.setItem("productos_sistema", JSON.stringify(listaProductos));
+
+    pintarProductos(listaProductos);
+}
+function eliminarProductoLista(posicion) {
+    listaProductos.splice(posicion, 1);
+    // Guardar lista actualizada en el navegador
+    localStorage.setItem("productos_sistema", JSON.stringify(listaProductos));
+    pintarProductos(listaProductos);
+}
+function eliminarProductoLista(posicion) {
+    
+    listaProductos.splice(posicion, 1);
+    pintarProductos(listaProductos);
 }
 
 function agregarProductoLista() {
@@ -312,7 +361,6 @@ function guardarProductos() {
 
     document.getElementById("resultadoPortada").innerHTML = estructuraResultado;
 }
-
 /* =========================
    CÁLCULO DE IVA PORTADA
 ========================= */
@@ -441,3 +489,31 @@ function imprimirPDF() {
     }
     window.print();
 }
+
+/* ==========================================================================
+   RECUPERAR CLIENTE EN LA SECCIÓN DE FACTURACIÓN
+   ========================================================================== */
+function buscarClienteFactura() {
+    let cedulaBuscar = document.getElementById("cedula").value;
+    let encontrado = false;
+
+    if (cedulaBuscar === "") {
+        alert("Por favor, ingrese una cédula para buscar.");
+        return;
+    }
+
+    for (let i = 0; i < clientes.length; i++) {
+        if (clientes[i].cedula === cedulaBuscar) {
+            document.getElementById("cliente").value = clientes[i].nombre;
+            document.getElementById("telefono").value = clientes[i].telefono;
+            document.getElementById("correo").value = clientes[i].correo;
+            encontrado = true;
+            break; 
+        }
+    }
+    if (!encontrado) {
+        alert("Cliente no registrado en el sistema. Puede ingresar los datos manualmente.");
+    }
+}
+pintarClientes();
+pintarProductos(listaProductos);
