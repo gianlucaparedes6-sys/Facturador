@@ -262,3 +262,63 @@ td button:hover {
     transform: scale(1.1);
     accent-color: #1f3c88;
 }
+/* ==========================================================================
+   OPTIMIZACIÓN DE TAMAÑO PARA INPUTS EN LA PORTADA
+   ========================================================================== */
+#portada input[type="text"],
+#portada input[type="number"] {
+    width: auto;             /* Evita que se estiren al 100% de la pantalla */
+    max-width: 250px;        /* Define un ancho máximo corto y estético */
+    padding: 6px 12px;       /* Reduce el grosor vertical a la mitad */
+    font-size: 0.9rem;       /* Texto un poco más compacto */
+    display: inline-block;   /* Permite un flujo ordenado en la interfaz */
+    margin: 6px 0;           /* Espaciado vertical uniforme */
+}
+
+/* Ajuste opcional para las etiquetas de texto en la portada */
+#portada label {
+    display: block;          /* Coloca la etiqueta justo encima del input */
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #8b949e;          /* Gris claro que mantiene la estética oscura */
+    font-weight: 600;
+}
+
+/* Ajuste para que los botones de la portada coincidan con la nueva escala */
+#portada button {
+    padding: 6px 15px;       /* Botones más delgados acordes a los inputs */
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+/* ==========================================================================
+   ESTILIZACIÓN PARA LOGO EN IMAGEN CON BORDES SÚPER REDONDEADOS
+   ========================================================================== */
+.logo-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    max-height: 90px;          /* Altura ideal para el encabezado */
+    width: auto;               /* Mantiene la proporción de tu imagen */
+    object-fit: cover;
+    
+    /* Bordes súper redondeados */
+    border-radius: 50px;       /* Curvatura alta estilo píldora o círculo */
+    border: 2px solid #58a6ff; /* Línea de borde azul tecnológico brillante */
+    padding: 4px;              /* Espacio de separación entre la imagen y el borde */
+    background: #161b22;       /* Fondo oscuro para contrastar si el logo es transparente */
+    
+    /* Efectos de brillo de neón y transición suave */
+    box-shadow: 0 0 15px rgba(88, 166, 255, 0.4); 
+    transition: all 0.3s ease;
+}
+
+/* Efecto dinámico cuando pasas el cursor por encima */
+.logo-img:hover {
+    transform: scale(1.06) rotate(2deg); /* Pequeño giro y aumento de tamaño moderno */
+    box-shadow: 0 0 25px rgba(88, 166, 255, 0.8); /* Intensifica el neón azul */
+    border-color: #79c0ff;               /* Aclara el borde al interactuar */
+}
