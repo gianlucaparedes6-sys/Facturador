@@ -320,5 +320,6 @@ td button:hover {
 .logo-img:hover {
     transform: scale(1.06) rotate(2deg); /* Pequeño giro y aumento de tamaño moderno */
     box-shadow: 0 0 25px rgba(88, 166, 255, 0.8); /* Intensifica el neón azul */
-    border-color: #79c0ff;               /* Aclara el borde al interactuar */
+    border-color: #79c0ff;
+                   /* Aclara el borde al interactuar */
 }

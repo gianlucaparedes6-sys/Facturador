@@ -2,4 +2,4 @@ Quiz
 https://docs.google.com/forms/d/e/1FAIpQLSezOtdyTXgsNJiAGWN5uTPTFc4YlH3Uz1rGcvD_fxEr8A9WPQ/viewform?usp=publish-editor
 
 Vercel
-https://facturador-six-sigma.vercel.app/
+https://facturador-six-sigma.vercel.app/ 
