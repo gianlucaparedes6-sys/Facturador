@@ -69,7 +69,7 @@ function agregarProductoLista() {
 
     listaProductos.push({ nombre, precio, iva });
 
-    // GUARDAR EN EL NAVEGADOR (Para que no se borre al actualizar)
+    // GUARDAR EN EL NAVEGADOR
     localStorage.setItem("productos_sistema", JSON.stringify(listaProductos));
 
     document.getElementById("nuevoProducto").value = "";
@@ -80,12 +80,8 @@ function agregarProductoLista() {
 }
 
 function eliminarProductoLista(nombreProducto) {
-    // Filtrar la lista dejando fuera el producto que coincide con el nombre
     listaProductos = listaProductos.filter(p => p.nombre !== nombreProducto);
-    
-    // GUARDAR LA LISTA ACTUALIZADA EN EL NAVEGADOR
     localStorage.setItem("productos_sistema", JSON.stringify(listaProductos));
-    
     pintarProductos(listaProductos);
 }
 
@@ -97,7 +93,7 @@ function asignarAutocompletadoFactura() {
     inputProductoFactura.addEventListener("input", function() {
         let textoEscrito = this.value.trim().toLowerCase();
         let precioInput = document.getElementById("precio");
-        let ivaSelectFactura = document.getElementById("iva"); // Campo del IVA general
+        let ivaSelectFactura = document.getElementById("iva");
 
         let productoEncontrado = listaProductos.find(p => p.nombre.toLowerCase() === textoEscrito);
 
@@ -124,7 +120,6 @@ function agregarProducto() {
     }
 
     let productoEncontrado = listaProductos.find(p => p.nombre.toLowerCase() === productoInput.toLowerCase());
-    
     let precioConIva = precio;
 
     if (productoEncontrado && productoEncontrado.iva) {
@@ -172,7 +167,6 @@ function eliminarProducto(posicion) {
 
 function calcularTotales() {
     let totalGeneral = 0;
-
     
     for (let i = 0; i < productos.length; i++) {
         totalGeneral += productos[i].subtotal;
@@ -190,9 +184,7 @@ function limpiarInputs() {
     document.getElementById("precio").value = "";
 }
 
-
    //NAVEGACIÓN DE SECCIONES
-
 function mostrarSeccion(id) {
     let secciones = document.getElementsByClassName("seccion");
 
@@ -203,9 +195,7 @@ function mostrarSeccion(id) {
     document.getElementById(id).style.display = "block";
 }
 
-
   // GESTIÓN DE CLIENTES
-
 let clientes = JSON.parse(localStorage.getItem("clientes_sistema")) || [];
 
 function guardarCliente() {
@@ -323,8 +313,8 @@ function buscarClienteFactura() {
         alert("Cliente no registrado en el sistema. Puede ingresar los datos manualmente.");
     }
 }
+
    //PROCESAR PRODUCTOS PORTADA / MINI FACTURA MANUAL
- 
 function guardarProductos() {
     let nomProd1 = document.getElementById("primerProducto").value;
     let precProd1 = parseFloat(document.getElementById("precioProducto").value) || 0;
@@ -376,7 +366,7 @@ function proIVA1() {
 
 function proIVA2() {
     let precioProd2 = parseFloat(document.getElementById("precioProducto2").value) || 0;
-        let porcentajeIva2 = parseFloat(document.getElementById("porcentajeDeIVA2").value) || 0;
+    let porcentajeIva2 = parseFloat(document.getElementById("porcentajeDeIVA2").value) || 0;
 
     if (precioProd2 <= 0) {
         alert("Por favor, primero ingrese el precio del Producto 2.");
@@ -472,8 +462,35 @@ function imprimirPDF() {
     window.print();
 }
 
-
-//INICIALIZACIÓN DEL SISTEMA AL CARGAR LA PÁGINA
+//INICIALIZACIÓN DEL SISTEMA
 pintarClientes();
 pintarProductos(listaProductos);
 asignarAutocompletadoFactura();
+
+// ==========================================================================
+// GESTIÓN DE TEMA CLARO / OSCURO (PERSISTENTE)
+// ==========================================================================
+function alternarTema() {
+    const body = document.body;
+    const boton = document.getElementById("btn-tema");
+    
+    body.classList.toggle("light-theme");
+    
+    if (body.classList.contains("light-theme")) {
+        boton.innerHTML = "☀️ Modo Claro";
+        localStorage.setItem("tema_sistema", "claro");
+    } else {
+        boton.innerHTML = "🌙 Modo Oscuro";
+        localStorage.setItem("tema_sistema", "oscuro");
+    }
+}
+
+(function cargarTemaGuardado() {
+    const temaGuardado = localStorage.getItem("tema_sistema");
+    const boton = document.getElementById("btn-tema");
+    
+    if (temaGuardado === "claro" && boton) {
+        document.body.classList.add("light-theme");
+        boton.innerHTML = "☀️ Modo Claro";
+    }
+})();
