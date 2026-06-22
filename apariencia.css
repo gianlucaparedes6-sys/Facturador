@@ -47,11 +47,72 @@ h2 {
 
 .titulo {
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     background: #161b22;
     border-radius: 12px;
-    border: 1px solid #58a6ff;
-    box-shadow: 0 0 15px rgba(88, 166, 255, 0.15);
+    border: 1px solid #30363d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   ANIMACIÓN LED 3D PARA EL TÍTULO
+   ========================================================================== */
+.led-3d-animacion {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #58a6ff;
+    display: inline-block;
+    animation: brilloLed3D 3s infinite ease-in-out;
+}
+
+@keyframes brilloLed3D {
+    0%, 100% {
+        transform: perspective(500px) rotateX(10deg) rotateY(-5deg);
+        text-shadow: 
+            1px 1px 0px #0969da,
+            2px 2px 0px #0969da,
+            3px 3px 0px #0969da,
+            4px 4px 5px rgba(0, 0, 0, 0.7),
+            0 0 10px rgba(88, 166, 255, 0.5),
+            0 0 20px rgba(88, 166, 255, 0.3);
+    }
+    50% {
+        transform: perspective(500px) rotateX(10deg) rotateY(5deg);
+        text-shadow: 
+            1px 1px 0px #58a6ff,
+            2px 2px 0px #58a6ff,
+            3px 3px 0px #58a6ff,
+            4px 4px 5px rgba(0, 0, 0, 0.7),
+            0 0 20px rgba(88, 166, 255, 0.8),
+            0 0 40px rgba(88, 166, 255, 0.5);
+    }
+}
+
+/* Ajuste del efecto LED 3D cuando pasa a Modo Claro */
+body.light-theme .led-3d-animacion {
+    color: #0969da;
+    animation: brilloLed3DClaro 3s infinite ease-in-out;
+}
+
+@keyframes brilloLed3DClaro {
+    0%, 100% {
+        transform: perspective(500px) rotateX(10deg) rotateY(-5deg);
+        text-shadow: 
+            1px 1px 0px #b6d4fe,
+            2px 2px 0px #b6d4fe,
+            3px 3px 4px rgba(0, 0, 0, 0.2),
+            0 0 8px rgba(9, 105, 218, 0.3);
+    }
+    50% {
+        transform: perspective(500px) rotateX(10deg) rotateY(5deg);
+        text-shadow: 
+            1px 1px 0px #0969da,
+            2px 2px 0px #0969da,
+            3px 3px 4px rgba(0, 0, 0, 0.2),
+            0 0 15px rgba(9, 105, 218, 0.5);
+    }
 }
 
 .titulo p {
@@ -193,8 +254,6 @@ td button:hover {
 }
 
 /* ==========================================================================
-   ESTILOS EXCLUSIVOS PARA EL CONTENEDOR DEL QUIZ TECNOLÓGICO
-   /* ==========================================================================
    ESTILOS PARA EL PIE DE PÁGINA (FOOTER)
    ========================================================================== */
 .pie-pagina {
@@ -214,82 +273,77 @@ td button:hover {
 }
 
 .pie-pagina span {
-    color: #58a6ff; /* Resalta los nombres en azul tecnológico */
+    color: #58a6ff;
     font-weight: 600;
 }
 
-/* Ocultar los créditos automáticamente al momento de imprimir la factura */
 @media print {
     .pie-pagina {
         display: none !important;
     }
 }
+
 /* ==========================================================================
    CORRECCIÓN CRÍTICA DE CONTRASTE PARA EL MINI QUIZ
    ========================================================================== */
-
-/* Forzar que el texto de la pregunta (arriba de las opciones) sea visible */
 #contenedorQuiz p {
-    color: #58a6ff !important; /* Azul tecnológico brillante */
+    color: #58a6ff !important;
     font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 12px;
 }
 
-/* Forzar que los cuadros de las respuestas tengan fondo blanco y LETRA NEGRA */
 #contenedorQuiz label {
     display: block !important;
-    background-color: #ffffff !important; /* Fondo blanco para las opciones */
-    color: #000000 !important;            /* LETRA NEGRA IMPECABLE */
+    background-color: #ffffff !important;
+    color: #000000 !important;
     border: 1px solid #30363d !important;
     padding: 12px 15px !important;
     margin: 8px 0 !important;
     border-radius: 6px !important;
-    font-weight: 600 !important;          /* Texto un poco más grueso para leer mejor */
+    font-weight: 600 !important;
     cursor: pointer;
     transition: background 0.2s ease;
 }
 
-/* Efecto al pasar el mouse por encima de una opción antes de marcarla */
 #contenedorQuiz label:hover {
-    background-color: #f0f4f8 !important; /* Gris muy claro al pasar el cursor */
+    background-color: #f0f4f8 !important;
     border-color: #58a6ff !important;
 }
 
-/* Asegurar que el botón circular de selección se vea bien */
 #contenedorQuiz input[type="radio"] {
     margin-right: 12px !important;
     transform: scale(1.1);
     accent-color: #1f3c88;
 }
+
 /* ==========================================================================
    OPTIMIZACIÓN DE TAMAÑO PARA INPUTS EN LA PORTADA
    ========================================================================== */
 #portada input[type="text"],
 #portada input[type="number"] {
-    width: auto;             /* Evita que se estiren al 100% de la pantalla */
-    max-width: 250px;        /* Define un ancho máximo corto y estético */
-    padding: 6px 12px;       /* Reduce el grosor vertical a la mitad */
-    font-size: 0.9rem;       /* Texto un poco más compacto */
-    display: inline-block;   /* Permite un flujo ordenado en la interfaz */
-    margin: 6px 0;           /* Espaciado vertical uniforme */
+    width: auto;
+    max-width: 250px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin: 6px 0;
 }
 
-/* Ajuste opcional para las etiquetas de texto en la portada */
 #portada label {
-    display: block;          /* Coloca la etiqueta justo encima del input */
+    display: block;
     margin-top: 10px;
     font-size: 0.9rem;
-    color: #8b949e;          /* Gris claro que mantiene la estética oscura */
+    color: #8b949e;
     font-weight: 600;
 }
 
-/* Ajuste para que los botones de la portada coincidan con la nueva escala */
 #portada button {
-    padding: 6px 15px;       /* Botones más delgados acordes a los inputs */
+    padding: 6px 15px;
     font-size: 0.9rem;
     vertical-align: middle;
 }
+
 /* ==========================================================================
    ESTILIZACIÓN PARA LOGO EN IMAGEN CON BORDES SÚPER REDONDEADOS
    ========================================================================== */
@@ -301,24 +355,145 @@ td button:hover {
 }
 
 .logo-img {
-    max-height: 90px;          /* Altura ideal para el encabezado */
-    width: auto;               /* Mantiene la proporción de tu imagen */
+    max-height: 90px;
+    width: auto;
     object-fit: cover;
-    
-    /* Bordes súper redondeados */
-    border-radius: 50px;       /* Curvatura alta estilo píldora o círculo */
-    border: 2px solid #58a6ff; /* Línea de borde azul tecnológico brillante */
-    padding: 4px;              /* Espacio de separación entre la imagen y el borde */
-    background: #161b22;       /* Fondo oscuro para contrastar si el logo es transparente */
-    
-    /* Efectos de brillo de neón y transición suave */
-    box-shadow: 0 0 15px rgba(88, 166, 255, 0.4); 
+    border-radius: 50px;
+    border: 2px solid #58a6ff;
+    padding: 4px;
+    background: #161b22;
+    box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
     transition: all 0.3s ease;
 }
 
-/* Efecto dinámico cuando pasas el cursor por encima */
 .logo-img:hover {
-    transform: scale(1.06) rotate(2deg); /* Pequeño giro y aumento de tamaño moderno */
-    box-shadow: 0 0 25px rgba(88, 166, 255, 0.8); /* Intensifica el neón azul */
-    border-color: #79c0ff;               /* Aclara el borde al interactuar */
+    transform: scale(1.06) rotate(2deg);
+    box-shadow: 0 0 25px rgba(88, 166, 255, 0.8);
+    border-color: #79c0ff;
+}
+
+/* ==========================================================================
+   BOTÓN COMPLETAMENTE FIJO DE TEMA (SUPERIOR DERECHA)
+   ========================================================================== */
+.btn-tema-flotante {
+    position: fixed; /* Mantiene el botón inmóvil en pantalla al hacer scroll */
+    top: 20px;
+    right: 20px;
+    z-index: 99999; /* Prioridad máxima por encima de cualquier modal o menú */
+    background: #161b22;
+    color: #58a6ff;
+    border: 1px solid #30363d;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-tema-flotante:hover {
+    background: #58a6ff;
+    color: #0d1117;
+    border-color: #58a6ff;
+    box-shadow: 0 0 18px rgba(88, 166, 255, 0.7);
+    transform: scale(1.05);
+}
+
+@media print {
+    .btn-tema-flotante {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   ESTILOS ADAPTATIVOS PARA EL MODO CLARO (.light-theme)
+   ========================================================================== */
+body.light-theme {
+    background: #f4f6f9;
+    color: #24292f;
+}
+
+body.light-theme .btn-tema-flotante {
+    background: #ffffff;
+    color: #0969da;
+    border-color: #d0d7de;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body.light-theme .btn-tema-flotante:hover {
+    background: #0969da;
+    color: #ffffff;
+}
+
+body.light-theme .card, 
+body.light-theme .menu,
+body.light-theme .titulo {
+    background: #ffffff;
+    border-color: #d0d7de;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme h2, 
+body.light-theme .titulo h4,
+body.light-theme .pie-pagina span {
+    color: #0969da;
+}
+
+body.light-theme h2 {
+    border-bottom: 1px solid #d0d7de;
+}
+
+body.light-theme table,
+body.light-theme input, 
+body.light-theme select {
+    background: #ffffff;
+    border-color: #d0d7de;
+    color: #24292f;
+}
+
+body.light-theme th {
+    background: #f6f8fa;
+    color: #0969da;
+    border-bottom: 2px solid #d0d7de;
+}
+
+body.light-theme td {
+    border-bottom: 1px solid #f6f8fa;
+    color: #24292f;
+}
+
+body.light-theme input:focus, 
+body.light-theme select:focus {
+    border-color: #0969da;
+    box-shadow: 0 0 8px rgba(9, 105, 218, 0.3);
+    background: #ffffff;
+}
+
+body.light-theme button {
+    background: #f6f8fa;
+    color: #24292f;
+    border-color: #d0d7de;
+}
+
+body.light-theme button:hover {
+    background: #0969da;
+    color: #ffffff;
+    border-color: #0969da;
+    box-shadow: 0 0 12px rgba(9, 105, 218, 0.3);
+}
+
+body.light-theme .menu button {
+    background: transparent;
+    color: #57606a;
+}
+
+body.light-theme .menu button:hover {
+    color: #0969da;
+    background: #f6f8fa;
+    border-color: #d0d7de;
+}
+
+body.light-theme .pie-pagina {
+    background: #ffffff;
+    border-top: 1px solid #d0d7de;
 }

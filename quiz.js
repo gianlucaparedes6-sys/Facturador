@@ -7,6 +7,7 @@ const bancoPreguntasBase = [
         pregunta: "¿Qué es una factura según el material de estudio?",
         opciones: ["Un inventario de bodega", "Un comprobante de venta legal", "Un registro interno del programador"],
         respuesta: 1
+        
     },
     {
         pregunta: "¿Qué hace esencialmente un sistema automatizado de facturación?",

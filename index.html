@@ -10,10 +10,10 @@
 
 <body>
 
+    <button id="btn-tema" class="btn-tema-flotante" onclick="alternarTema()">🌙 Modo Oscuro</button>
+
     <div class="menu">
-        <!-- TU IMAGEN DE LOGO -->
-         
-    <div class="logo-contenedor">
+        <div class="logo-contenedor">
         <img src="logo.png" alt="Logo CoreFact" class="logo-img">
     </div>
         <button onclick="mostrarSeccion('portada')">
@@ -40,7 +40,7 @@
     <div class="contenedor">
 
         <div class="titulo">
-            <h1>Mini Sistema de Facturación</h1>            
+            <h1 class="led-3d-animacion">Mini Sistema de Facturación</h1>            
         </div>
         <br><br>
   <div id="quiz" class="seccion oculto">
@@ -254,16 +254,12 @@
 
 </div>
 
-                <!-- CLIENTES -->
-
-        <div id="clientes" class="seccion oculto">
+                <div id="clientes" class="seccion oculto">
 
             <div class="card">
 
                 <h2>Clientes</h2>
 
-                <!-- INPUT -->
-                <!-- NOMBRE, CEDULA, TELEFONO, CORREO -->
                 <input type="text" id="nombreCliente" placeholder="Nombre">
 
                 <input type="text" id="cedulaCliente" placeholder="Cédula">
@@ -271,15 +267,11 @@
                 <input type="text" id="telefonoCliente" placeholder="Teléfono">
 
                 <input type="email" id="correoCliente" placeholder="Correo">
-                <!-- BOTON -->
-
                 <button onclick="guardarCliente()">Guardar Cliente</button>
                 <button onclick="modificarCliente()"> Modificar Cliente</button>
                 <button onclick="buscarCliente()">Buscar Cliente</button>
 
-                <!-- TABLA -->
-
-                        <table>
+                <table>
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -423,7 +415,8 @@
             <p>Desarrollado por: <span>Jefferson Quispe</span> & <span>Gianluca Paredes</span></p>
         </footer>
 
-    </div> <script src="facturacion.js"></script>
+    </div> 
+    <script src="facturacion.js"></script>
     <script src="quiz.js"></script>
 </body>
 </html>
