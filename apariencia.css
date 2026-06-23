@@ -497,3 +497,15 @@ body.light-theme .pie-pagina {
     background: #ffffff;
     border-top: 1px solid #d0d7de;
 }
+/* Correcciones de visualización en impresión para el módulo contable */
+@media print {
+    #contabilidad button, 
+    #contabilidad h4 {
+        display: none !important;
+    }
+}
+
+/* Adaptación del layout contable al Modo Claro */
+body.light-theme #totalGananciasAcumuladas {
+    color: #0969da !important;
+}
